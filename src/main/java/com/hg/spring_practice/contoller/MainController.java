@@ -1,6 +1,7 @@
 package com.hg.spring_practice.contoller;
 
 import com.hg.spring_practice.entity.Student;
+import com.hg.spring_practice.order_ex.OrderExInterface;
 import com.hg.spring_practice.primary_ex.Car;
 import com.hg.spring_practice.service_impl.StudentServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,5 +38,15 @@ public class MainController {
     @GetMapping("/getCar")
     String getCAr() {
         return car.carName();
+    }
+
+    @Autowired
+    List<OrderExInterface> orderExInterfaces;
+
+    @GetMapping("/orderEx")
+    String orderEx() {
+        return "order 1: " + orderExInterfaces.get(0).getRating()
+                + "\nOrder 2: " + orderExInterfaces.get(1).getRating()
+                + "\nOrder 3: " + orderExInterfaces.get(2).getRating();
     }
 }
